@@ -18,8 +18,8 @@ for lib in ${LIBRARIES[@]}; do
 	mkdir -p $PACKAGE/${lib}/$VERSION
 	cp -r $REPO/$PACKAGE/${lib}/$VERSION/${lib}-$VERSION.jar $PACKAGE/${lib}/$VERSION/
 	cp -r $REPO/$PACKAGE/${lib}/$VERSION/${lib}-$VERSION.pom $PACKAGE/${lib}/$VERSION/
-	sha256sum -b "$PACKAGE/${lib}/$VERSION/${lib}-$VERSION.jar"  | awk '{print $1}' >> ""$PACKAGE/${lib}/$VERSION/${lib}-$VERSION.jar".sha256"
-	sha256sum -b "$PACKAGE/${lib}/$VERSION/${lib}-$VERSION.pom"  | awk '{print $1}' >> ""$PACKAGE/${lib}/$VERSION/${lib}-$VERSION.pom".sha256"
+	sha1sum -b "$PACKAGE/${lib}/$VERSION/${lib}-$VERSION.jar"  | awk '{print $1}' >> ""$PACKAGE/${lib}/$VERSION/${lib}-$VERSION.jar".sha1"
+	sha1sum -b "$PACKAGE/${lib}/$VERSION/${lib}-$VERSION.pom"  | awk '{print $1}' >> ""$PACKAGE/${lib}/$VERSION/${lib}-$VERSION.pom".sha1"
 done
 
 
