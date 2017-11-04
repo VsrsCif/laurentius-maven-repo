@@ -8,17 +8,17 @@ LIBRARIES=(Laurentius-commons Laurentius-lce Laurentius-msh-xsd Laurentius-plugi
 
 # clear
 rm -rf si
-rm -rf Laurentius
+
 # add root pom
 mkdir -p $PACKAGE/Laurentius/$VERSION
 cp  $REPO/$PACKAGE/Laurentius/$VERSION/Laurentius-$VERSION.pom $PACKAGE/Laurentius/$VERSION
 
 
 for lib in ${LIBRARIES[@]}; do
-	mkdir -p $PACKAGE/${lib}/
-	cp -r $REPO/$PACKAGE/${lib}/$VERSION/${lib}-$VERSION.jar $PACKAGE/${lib}/
-	cp -r $REPO/$PACKAGE/${lib}/$VERSION/${lib}-$VERSION.pom $PACKAGE/${lib}/
-	sha256sum -b "$PACKAGE/${lib}/${lib}-$VERSION.jar"  | awk '{print $1}' >> ""$PACKAGE/${lib}/${lib}-$VERSION.jar".sha256"
+	mkdir -p $PACKAGE/${lib}/$VERSION
+	cp -r $REPO/$PACKAGE/${lib}/$VERSION/${lib}-$VERSION.jar $PACKAGE/${lib}/$VERSION/
+	cp -r $REPO/$PACKAGE/${lib}/$VERSION/${lib}-$VERSION.pom $PACKAGE/${lib}/$VERSION/
+	sha256sum -b "$PACKAGE/${lib}/$VERSION/${lib}-$VERSION.jar"  | awk '{print $1}' >> ""$PACKAGE/${lib}/$VERSION/${lib}-$VERSION.jar".sha256"
 done
 
 
